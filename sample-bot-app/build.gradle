@@ -5,13 +5,8 @@ plugins {
 sourceCompatibility = 1.8
 
 repositories {
-    maven {
-        name = "GitHubPackages"
-        url = uri("https://maven.pkg.github.com/tkachenkoas/telegram-bot-starter-kit")
-        credentials {
-            username = 'tkachenkoas'
-            password = '0a3c3eae9cff581feec59457253ca2b89c5e4781' // readonly token
-        }
+    repositories {
+        maven { url 'https://jitpack.io' }
     }
 }
 
