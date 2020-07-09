@@ -12,5 +12,5 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter:2.3.1.RELEASE'
-    implementation 'com.atstudio:telegram-bot-starter-kit:1.0.1'
+    implementation project(':telegram-bot-starter-kit')
 }
