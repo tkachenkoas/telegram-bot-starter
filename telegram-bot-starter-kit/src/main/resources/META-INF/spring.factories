@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.atstudio.telegrambot.starterpack.impl.ImplBeansConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.github.tkachenkoas.telegramstarter.impl.ImplBeansConfiguration

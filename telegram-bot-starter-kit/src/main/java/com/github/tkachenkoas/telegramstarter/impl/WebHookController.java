@@ -1,4 +1,4 @@
-package com.atstudio.telegrambot.starterpack.impl;
+package com.github.tkachenkoas.telegramstarter.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
