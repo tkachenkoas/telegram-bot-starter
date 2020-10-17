@@ -1,8 +1,8 @@
 package com.atstudio.telegrambot.starterpack.impl;
 
-import com.atstudio.telegrambot.starterpack.api.UpdateHandler;
+import com.atstudio.telegrambot.starterpack.api.RootUpdateReceiver;
 import com.atstudio.telegrambot.starterpack.api.UpdateProcessingExceptionHandler;
-import com.atstudio.telegrambot.starterpack.api.UpdateProcessor;
+import com.atstudio.telegrambot.starterpack.api.RootUpdateHandler;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -14,19 +14,19 @@ import java.util.Optional;
 @AllArgsConstructor
 @Component
 @Slf4j
-class UpdateHandlerImpl implements UpdateHandler {
+class UpdateHandlerImpl implements RootUpdateReceiver {
 
-    private final List<UpdateProcessor> processors;
+    private final List<RootUpdateHandler> processors;
     private final Optional<UpdateProcessingExceptionHandler> exceptionHandler;
 
     @Override
-    public void handleTelegramUpdate(Update update) {
+    public void acceptTelegramUpdate(Update update) {
         log.info("Received update from telegram: {}", update);
         try {
-            for (UpdateProcessor processor : processors) {
+            for (RootUpdateHandler processor : processors) {
 
                 if (processor.applicableFor(update)) {
-                    processor.processUpdate(update);
+                    processor.handle(update);
                     return;
                 }
             }

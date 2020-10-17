@@ -1,7 +1,7 @@
 package com.atstudio.telegrambot.starterpack.impl;
 
 import com.atstudio.telegrambot.starterpack.api.LongPollingUpdateTaskExecutor;
-import com.atstudio.telegrambot.starterpack.api.UpdateHandler;
+import com.atstudio.telegrambot.starterpack.api.RootUpdateReceiver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -19,12 +19,12 @@ class DefaultWebHookBot extends TelegramWebhookBot {
     @Value("${bot.token}")
     private String botToken;
 
-    private final UpdateHandler handler;
+    private final RootUpdateReceiver handler;
     private final LongPollingUpdateTaskExecutor updateExecutor;
 
     @Autowired
     public DefaultWebHookBot(
-            UpdateHandler handler,
+            RootUpdateReceiver handler,
             LongPollingUpdateTaskExecutor updateExecutor) {
         this.handler = handler;
         this.updateExecutor = updateExecutor;
@@ -32,7 +32,7 @@ class DefaultWebHookBot extends TelegramWebhookBot {
 
     @Override
     public BotApiMethod onWebhookUpdateReceived(Update update) {
-        updateExecutor.execute(() -> handler.handleTelegramUpdate(update));
+        updateExecutor.execute(() -> handler.acceptTelegramUpdate(update));
         return null;
     }
 

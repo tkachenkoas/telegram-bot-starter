@@ -1,8 +1,8 @@
 package com.atstudio.telegrambot.starterpack.api;
 
-import java.util.concurrent.Executor;
+import org.springframework.core.task.TaskExecutor;
 
-public interface LongPollingUpdateTaskExecutor extends Executor {
+public interface LongPollingUpdateTaskExecutor extends TaskExecutor {
 
     @Override
     void execute(Runnable task);
