@@ -1,6 +1,6 @@
-package com.atstudio.telegrambot.starterpack.impl;
+package com.github.tkachenkoas.telegramstarter.impl;
 
-import com.atstudio.telegrambot.starterpack.api.LongPollingUpdateTaskExecutor;
+import com.github.tkachenkoas.telegramstarter.api.LongPollingUpdateTaskExecutor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

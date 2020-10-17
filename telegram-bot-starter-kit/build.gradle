@@ -2,10 +2,19 @@ plugins {
     id 'maven-publish'
 }
 
-group 'com.atstudio'
-version '1.1.0'
-
 sourceCompatibility = 1.8
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.github.tkachenkoas'
+            artifactId = 'telegram-bot-starter-kit'
+            version = '1.1.0'
+
+            from components.java
+        }
+    }
+}
 
 dependencies {
     compile 'org.telegram:telegrambots-spring-boot-starter:4.9'

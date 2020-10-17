@@ -1,4 +1,4 @@
-package com.atstudio.telegrambot.starterpack.api;
+package com.github.tkachenkoas.telegramstarter.api;
 
 import org.springframework.core.task.TaskExecutor;
 

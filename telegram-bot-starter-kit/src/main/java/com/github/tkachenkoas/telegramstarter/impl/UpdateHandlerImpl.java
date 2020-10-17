@@ -1,8 +1,8 @@
-package com.atstudio.telegrambot.starterpack.impl;
+package com.github.tkachenkoas.telegramstarter.impl;
 
-import com.atstudio.telegrambot.starterpack.api.RootUpdateReceiver;
-import com.atstudio.telegrambot.starterpack.api.UpdateProcessingExceptionHandler;
-import com.atstudio.telegrambot.starterpack.api.RootUpdateHandler;
+import com.github.tkachenkoas.telegramstarter.api.RootUpdateReceiver;
+import com.github.tkachenkoas.telegramstarter.api.UpdateProcessingExceptionHandler;
+import com.github.tkachenkoas.telegramstarter.api.RootUpdateHandler;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

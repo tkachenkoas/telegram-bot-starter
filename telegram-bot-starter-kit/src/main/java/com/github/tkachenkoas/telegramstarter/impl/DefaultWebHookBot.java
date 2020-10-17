@@ -1,17 +1,18 @@
-package com.atstudio.telegrambot.starterpack.impl;
+package com.github.tkachenkoas.telegramstarter.impl;
 
-import com.atstudio.telegrambot.starterpack.api.LongPollingUpdateTaskExecutor;
-import com.atstudio.telegrambot.starterpack.api.RootUpdateReceiver;
+import com.github.tkachenkoas.telegramstarter.api.LongPollingUpdateTaskExecutor;
+import com.github.tkachenkoas.telegramstarter.api.RootUpdateReceiver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.bots.TelegramWebhookBot;
+import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-@ConditionalOnProperty(value = "bot.mode", havingValue = "polling")
+@ConditionalOnProperty(value = "bot.mode", havingValue = "webhook")
 @Component
-class DefaultLongPollingBot extends TelegramLongPollingBot {
+class DefaultWebHookBot extends TelegramWebhookBot {
 
     @Value("${bot.username}")
     private String botUserName;
@@ -22,11 +23,17 @@ class DefaultLongPollingBot extends TelegramLongPollingBot {
     private final LongPollingUpdateTaskExecutor updateExecutor;
 
     @Autowired
-    public DefaultLongPollingBot(
+    public DefaultWebHookBot(
             RootUpdateReceiver handler,
             LongPollingUpdateTaskExecutor updateExecutor) {
         this.handler = handler;
         this.updateExecutor = updateExecutor;
+    }
+
+    @Override
+    public BotApiMethod onWebhookUpdateReceived(Update update) {
+        updateExecutor.execute(() -> handler.acceptTelegramUpdate(update));
+        return null;
     }
 
     @Override
@@ -40,8 +47,9 @@ class DefaultLongPollingBot extends TelegramLongPollingBot {
     }
 
     @Override
-    public void onUpdateReceived(Update update) {
-        updateExecutor.execute(() -> handler.acceptTelegramUpdate(update));
+    public String getBotPath() {
+        return "";
     }
+
 
 }
