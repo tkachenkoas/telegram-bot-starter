@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("com.atstudio.telegrambot.starterpack.impl")
+@ComponentScan("com.github.tkachenkoas.telegramstarter.impl")
 public class ImplBeansConfiguration {
 
     @ConditionalOnMissingBean(LongPollingUpdateTaskExecutor.class)

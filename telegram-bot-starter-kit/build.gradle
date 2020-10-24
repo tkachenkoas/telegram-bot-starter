@@ -9,7 +9,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.github.tkachenkoas'
             artifactId = 'telegram-bot-starter-kit'
-            version = '1.1.0'
+            version = '1.1.1'
 
             from components.java
         }
