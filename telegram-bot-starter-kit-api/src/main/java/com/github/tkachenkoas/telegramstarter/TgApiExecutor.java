@@ -1,4 +1,4 @@
-package com.github.tkachenkoas.telegramstarter.api;
+package com.github.tkachenkoas.telegramstarter;
 
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 

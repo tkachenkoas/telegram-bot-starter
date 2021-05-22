@@ -1,13 +1,12 @@
-package com.github.tkachenkoas.telegramstarter.impl;
+package com.github.tkachenkoas.telegramstarter;
 
-import com.github.tkachenkoas.telegramstarter.api.LongPollingUpdateTaskExecutor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("com.github.tkachenkoas.telegramstarter.impl")
+@ComponentScan("com.github.tkachenkoas.telegramstarter")
 public class ImplBeansConfiguration {
 
     @ConditionalOnMissingBean(LongPollingUpdateTaskExecutor.class)

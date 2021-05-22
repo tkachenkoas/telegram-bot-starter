@@ -8,7 +8,7 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'com.github.tkachenkoas'
-            artifactId = 'telegram-bot-starter-kit'
+            artifactId = 'telegram-bot-starter-kit-api'
             version = '1.2.0'
 
             from components.java
@@ -17,7 +17,6 @@ publishing {
 }
 
 dependencies {
-    compile project(':telegram-bot-starter-kit-api')
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.3.1.RELEASE'
+    compile 'org.telegram:telegrambots-spring-boot-starter:4.9'
 }
 
