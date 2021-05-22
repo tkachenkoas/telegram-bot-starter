@@ -1,6 +1,5 @@
-package com.github.tkachenkoas.telegramstarter.impl;
+package com.github.tkachenkoas.telegramstarter;
 
-import com.github.tkachenkoas.telegramstarter.api.TgApiExecutor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

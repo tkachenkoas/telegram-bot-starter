@@ -1,7 +1,5 @@
-package com.github.tkachenkoas.telegramstarter.impl;
+package com.github.tkachenkoas.telegramstarter;
 
-import com.github.tkachenkoas.telegramstarter.api.LongPollingUpdateTaskExecutor;
-import com.github.tkachenkoas.telegramstarter.api.RootUpdateReceiver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

@@ -1,10 +1,6 @@
-package com.github.tkachenkoas.telegramstarter.impl;
+package com.github.tkachenkoas.telegramstarter;
 
-import com.github.tkachenkoas.telegramstarter.api.RootUpdateReceiver;
-import com.github.tkachenkoas.telegramstarter.api.UpdateProcessingExceptionHandler;
-import com.github.tkachenkoas.telegramstarter.api.RootUpdateHandler;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
@@ -13,16 +9,18 @@ import java.util.Optional;
 
 @AllArgsConstructor
 @Component
-@Slf4j
 class UpdateHandlerImpl implements RootUpdateReceiver {
 
     private final List<RootUpdateHandler> processors;
     private final Optional<UpdateProcessingExceptionHandler> exceptionHandler;
+    private final Optional<UpdatePreHandler> preHandler;
+    private final Optional<UpdatePostHandler> postHandler;
 
     @Override
     public void acceptTelegramUpdate(Update update) {
-        log.info("Received update from telegram: {}", update);
         try {
+            preHandler.ifPresent(bean -> bean.preHandle(update));
+
             for (RootUpdateHandler processor : processors) {
 
                 if (processor.applicableFor(update)) {
@@ -34,7 +32,8 @@ class UpdateHandlerImpl implements RootUpdateReceiver {
             exceptionHandler.ifPresent(
                     handler -> handler.handleUpdateProcessingException(update, e)
             );
-            return;
+        } finally {
+            postHandler.ifPresent(bean -> bean.postHandle(update));
         }
     }
 
